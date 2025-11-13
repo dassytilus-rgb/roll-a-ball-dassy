@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class playercontroller : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class playercontroller : MonoBehaviour
 
     public float speed = 0;
 
+  private int count; 
+
+  public TextMeshProUGUI countText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        count = 0;
+        SetCountText();
     }
 
     // Update is called once per frame
@@ -31,4 +38,23 @@ public class playercontroller : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickps")){
+            other.gameObject.SetActive(false);
+            count = count + 1;
+            SetCountText();
+        }
+    }
+    void SetCountText(){
+        countText.text = "Count: " +count.ToString();
+    }
+
 }
+
+
+
+
+
+
