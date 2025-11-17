@@ -16,12 +16,17 @@ public class playercontroller : MonoBehaviour
 
   public TextMeshProUGUI countText;
 
+public GameObject winText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
+        winText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,8 +43,7 @@ public class playercontroller : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
-
-    void OnTriggerEnter(Collider other)
+ void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pickps")){
             other.gameObject.SetActive(false);
@@ -49,8 +53,12 @@ public class playercontroller : MonoBehaviour
     }
     void SetCountText(){
         countText.text = "Count: " +count.ToString();
-    }
+        if(count >= 5){
+        winText.SetActive(true);
 
+        }
+
+    }
 }
 
 
