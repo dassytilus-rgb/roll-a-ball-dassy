@@ -54,11 +54,21 @@ public GameObject winText;
     void SetCountText(){
         countText.text = "Count: " +count.ToString();
         if(count >= 5){
-        winText.SetActive(true);
+            winText.SetActive(true);
+            Destroy(GameObject.FindWithTag("Enemy"));
 
         }
 
     }
+
+    private void OnCollisionEnter(Collision collision){
+    if(collision.gameObject.CompareTag("Enemy")){
+        Destroy(gameObject);
+       winText.SetActive(true);
+       winText.GetComponent<TextMeshProUGUI>().text = " You Lose";  
+      }
+    }
+
 }
 
 
