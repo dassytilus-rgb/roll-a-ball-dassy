@@ -50,6 +50,12 @@ public GameObject winText;
             count = count + 1;
             SetCountText();
         }
+if (other.gameObject.CompareTag("Boost"))
+{
+speed = speed + 2;
+other.gameObject.SetActive(false);
+}
+
     }
     void SetCountText(){
         countText.text = "Count: " +count.ToString();

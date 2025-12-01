@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickps
   - Enemy
+  - Boost
   layers:
   - Default
   - TransparentFX
