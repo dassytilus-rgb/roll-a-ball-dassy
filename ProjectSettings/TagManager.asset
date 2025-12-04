@@ -7,6 +7,7 @@ TagManager:
   - Pickps
   - Enemy
   - Boost
+  - Reset
   layers:
   - Default
   - TransparentFX

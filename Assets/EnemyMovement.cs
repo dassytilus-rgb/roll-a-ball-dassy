@@ -18,6 +18,14 @@ private NavMeshAgent navMeshAgent;
     {
         if(player != null){
 navMeshAgent.SetDestination(player.position);
+
     }
+    }
+    void OnTriggerEnter(Collider other){
+    if (other.gameObject.CompareTag("Resets")){
+        transform.position = new Vector3(0, 0.5f, 0);
+        other.gameObject.SetActive(false);
+    }
+
     }
 }
